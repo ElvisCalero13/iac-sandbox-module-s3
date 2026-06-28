@@ -85,8 +85,8 @@ resource "aws_iam_policy" "bp_s3_replication_pol" {
 resource "aws_iam_role" "bp_s3_replication_role" {
   count = var.bp_replication != null ? 1 : 0
 
-  name               = "${var.bucket_name}-role"
-  assume_role_policy = data.aws_iam_policy_document.bp_s3_replication_pol_doc[0].json
+  name                = "${var.bucket_name}-role"
+  assume_role_policy  = data.aws_iam_policy_document.bp_s3_replication_pol_doc[0].json
   managed_policy_arns = [aws_iam_policy.bp_s3_replication_pol[0].arn]
 
   provider = aws.service-primary
