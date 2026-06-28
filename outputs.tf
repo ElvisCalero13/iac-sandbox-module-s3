@@ -25,15 +25,15 @@ output "consumer_policies" {
   }
 }
 
-output "bucket_kms_key_id" {
-  description = "S3 Bucket KMS Key ID"
-  value       = local.kms_key_id
-}
+# output "bucket_kms_key_id" {
+#   description = "S3 Bucket KMS Key ID"
+#   value       = local.kms_key_id
+# }
 
-output "bucket_kms_key_arn" {
-  description = "S3 Bucket KMS Key ARN"
-  value       = local.kms_key_arn
-}
+# output "bucket_kms_key_arn" {
+#   description = "S3 Bucket KMS Key ARN"
+#   value       = local.kms_key_arn
+# }
 
 output "bucket" {
   description = "S3 bucket details"

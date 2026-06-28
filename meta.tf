@@ -17,10 +17,12 @@ locals {
   databricks_role_name  = length(local.databricks_full_name) > 64 ? "${local.databricks_short_name}-unity-role" : local.databricks_full_name
 
   sse_algorithm = var.enable_sse ? "AES256" : "aws:kms"
-  kms_key_arn   = var.enable_sse ? null : var.kms_key_arn.primary != null ? var.kms_key_arn.primary : module.bucket_kms_key[0].key_arn
-  kms_key_id    = var.enable_sse ? null : var.kms_key_arn.primary != null ? var.kms_key_arn.primary : module.bucket_kms_key[0].key_id
+  kms_key_arn   = var.enable_sse ? null : var.kms_key_arn.primary
+  kms_key_id    = var.enable_sse ? null : var.kms_key_arn.primary
+  # kms_key_arn   = var.enable_sse ? null : var.kms_key_arn.primary != null ? var.kms_key_arn.primary : module.bucket_kms_key[0].key_arn
+  # kms_key_id    = var.enable_sse ? null : var.kms_key_arn.primary != null ? var.kms_key_arn.primary : module.bucket_kms_key[0].key_id
 
-  enable_object_lock = var.object_lock_rule.mode != null ? true : false
+  enable_object_lock   = var.object_lock_rule.mode != null ? true : false
   inventory_bucket_arn = try(var.inventory.destination.bucket.bucket_arn, null) != null ? var.inventory.destination.bucket.bucket_arn : aws_s3_bucket.bucket.arn
 }
 
