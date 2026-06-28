@@ -269,3 +269,10 @@ variable "cloudwatch_log_group_name_secondary" {
   type        = string
   default     = ""
 }
+
+
+variable "enable_s3_access_points_support" {
+  description = "Feature flag to enable S3 Access Points support"
+  type        = bool
+  default     = false
+}
