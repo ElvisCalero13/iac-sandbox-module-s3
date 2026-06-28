@@ -14,8 +14,8 @@ data "aws_iam_policy_document" "consumers" {
   policy_id = replace(each.key, "/[^a-zA-Z0-9]/", "")
 
   statement {
-    effect = "Allow"
-    sid    = replace(each.key, "/[^a-zA-Z0-9]/", "")
+    effect  = "Allow"
+    sid     = replace(each.key, "/[^a-zA-Z0-9]/", "")
     actions = each.value
 
     resources = [
