@@ -79,14 +79,14 @@ resource "aws_iam_policy" "iam-policy-bucket" {
           "kms:GenerateDataKey*"
         ],
         Resource = [local.kms_key_arn],
-        Effect = "Allow"
+        Effect   = "Allow"
       }] : [],
       [
         {
-          Sid = "AssumeRolePipeline",
-          Action = ["sts:AssumeRole"],
+          Sid      = "AssumeRolePipeline",
+          Action   = ["sts:AssumeRole"],
           Resource = [aws_iam_role.iam-role-bucket[0].arn],
-          Effect = "Allow"
+          Effect   = "Allow"
         }
       ]
     )

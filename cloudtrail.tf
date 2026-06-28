@@ -4,8 +4,8 @@
 resource "aws_cloudtrail" "s3_object_events_primary" {
   count = var.enable_cloudtrail ? 1 : 0
 
-  name                          = "${var.bucket_name}-primary-object-events"
-  s3_bucket_name                = var.cloudtrail_bucket
+  name           = "${var.bucket_name}-primary-object-events"
+  s3_bucket_name = var.cloudtrail_bucket
   #s3_key_prefix                = "${var.bucket_name}/"
   include_global_service_events = var.is_multi_region_trail
   is_multi_region_trail         = var.is_multi_region_trail
@@ -50,8 +50,8 @@ resource "aws_cloudtrail" "s3_object_events_primary" {
 resource "aws_cloudtrail" "s3_object_events_secondary" {
   count = var.enable_cloudtrail && var.enable_multiregion ? 1 : 0
 
-  name                          = "${var.bucket_name}-secondary-object-events"
-  s3_bucket_name                = var.cloudtrail_bucket_secondary
+  name           = "${var.bucket_name}-secondary-object-events"
+  s3_bucket_name = var.cloudtrail_bucket_secondary
   #s3_key_prefix                = "${var.bucket_name}/"
   include_global_service_events = var.is_multi_region_trail
   is_multi_region_trail         = var.is_multi_region_trail
